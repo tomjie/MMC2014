@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Migration Map 2010</title>
+        <meta name="description" content="">
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/png" href="favicon.png" />
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
+
+        <!-- Stylesheets -->
+        <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" /><![endif]-->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap-switch.min.css">
+        <link rel="stylesheet" href="css/gh-fork-ribbon.css">
+        <style type="text/css">
+#github {
+	display: block;
+	position: fixed;
+	width: 150px;
+	height: 150px;
+	top: 0;
+	right: 0;
+	z-index: 9999;
+}
+</style>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+ <script src="js/bootstrap-switch.js" type="text/javascript"></script>
+ <script src="js/bootstrap-modal.js"></script>
+      <script src="js/bootstrap-typeahead.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var bro=$.browser;
+    var binfo="";
+    if(bro.msie) {
+    	$('#myModal').modal('show');
+    	binfo="Microsoft Internet Explorer "+bro.version;}
+    if(bro.mozilla) {binfo="Mozilla Firefox "+bro.version;}
+    if(bro.safari) {
+    	
+    	
+    	binfo="Apple Safari "+bro.version;}
+    if(bro.opera) {binfo="Opera "+bro.version;}
+   // alert(binfo);
+})
+</script>
+        <!-- HTML5 for oldIE -->
+        <!--[if lt IE 9]>
+            <script>
+                document.createElement('header'); document.createElement('nav'); document.createElement('section'); document.createElement('article');
+                document.createElement('aside'); document.createElement('footer'); document.createElement('hgroup');
+            </script>
+            <style>
+                header,nav,section,article,aside,footer,hgroup { display: block; }
+            </style>
+        <![endif]-->
+    </head>
+
+    <body>
+                 <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                   
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="./index.html"><i class="icon-home icon-white"></i> Home</a></li>
+                            </ul>
+                        <div class="navbar-form pull-right" >
+             <!--   <select class="combobox input-large" name="normal" id="normal">
+                <option value="">Choose a State</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="CT">Connecticut</option>
+                <option value="NY">New York</option>
+                <option value="MD">Maryland</option>
+                <option value="VA">Virginia</option>
+              </select> -->
+              
+                             <input id="searchbox" class="span3" type="text" placeholder="Input a country name" rel="popover" autocomplete="off" data-original-title="Search" data-placement="bottom" data-html="true" data-trigger="focus"> 
+                        <!--  <input type="checkbox"  checked data-on="primary" data-on-label="migration" data-off-label="emigration"  class="switch-small"> -->
+                            <button class="btn btn-inverse searchbtn" type="button" onclick="t()">Go</button>
+                        </div>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Subhead ================================================== -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Sorry!</h3>
+  </div>
+  <div class="modal-body">
+    <p>This presentation is only compatible with Chrome, Firefox or Safari browser. <img src="img/chrome.png" title="chrome" /><img src="img/firefox.png" title="firefox" /><img src="img/safari.png" title="safari"/></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+        <div class="container" style="margin-top: 50px">
+        
+        
+            <div class="row main-row">
+                <div class="span12">
+                    <div class="row">
+                        <div id="data" class="span3 pull-left">
+                            <div class="overview">
+                                <h4>Why people migration?</h4>
+                                <p>
+                            Why do people want to emigrate? 
+what is the primary factor considered by immigrants? 
+Our map aims at displaying the trend and features of immigration in 2010, thus leading to some useful knowledge in this field.
+Moving points are used to represents the Immigration direction,  number of points indicate number of immigrants. The basemap gives reasons immigration happened, which can be chosen by clients themselves.
+                          <br><h5>author :</h5><div> <a href = "mailto:tom.jie@gmail.com" title ="tom.jie@gmail.com" ><img src="img/zj.jpg"  width="50px" height="50px" alert="tom.jie@gmail.com" style="cursor:pointer"/></a>
+                                        <img src="img/gs.jpg"  width="50px" height="50px" style="cursor:pointer"/></div>
+                            </div>
+                        </div>
+                        <div id="map-area" class="span9 pull-right">
+                             <iframe id="childPage" src="map.html" width="100%" height="500px"  frameborder="0" scrolling="no"></iframe>  
+                        </div>
+                    </div>
+                </div><!-- end of main row -->
+            </div>
+   
+            <hr>
+            <footer class="textcenter">
+                <p class="muted">
+                   This project uses a litany of open-source projects and software,
+	for which we are incredibly grateful. In no
+	particular order, we want to acknowledge our use of: <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>, <a href="http://jquery.com">jQuery</a>, 
+	<a href="http://d3js.org">d3</a>, <a href="http://www.cartodb.com">Cartodb</a>, <a href="https://developers.google.com/appengine/">Google App Engine</a>,
+	<a href="https://github.com/artzub/wbgds">artzub</a> 
+                </p>
+            </footer>
+
+        </div><!-- /container -->
+
+
+        <!-- scripts at the bottom yo -->
+      
+<script type="text/javascript">
+function t(s){
+	document.getElementById('childPage').contentWindow.loadData(document.getElementById('searchbox').value); 
+}
+</script>
+
+      <script>
+            $(function () {
+                $('#searchbox').typeahead({
+                    source: [
+						{id:0,name:'Andorra'},
+						{id:1,name:'UnitedArabEmirates'},
+						{id:2,name:'Afghanistan'},
+						{id:3,name:'AntiguaandBarbuda'},
+						{id:4,name:'Albania'},
+						{id:5,name:'Armenia'},
+						{id:6,name:'NetherlandsAntilles'},
+						{id:7,name:'Angola'},
+						{id:8,name:'Argentina'},
+						{id:9,name:'AmericanSamoa'},
+						{id:10,name:'Austria'},
+						{id:11,name:'Australia'},
+						{id:12,name:'Aruba'},
+						{id:13,name:'Azerbaijan'},
+						{id:14,name:'BosniaandHerzegovina'},
+						{id:15,name:'Barbados'},
+						{id:16,name:'Bangladesh'},
+						{id:17,name:'Belgium'},
+						{id:18,name:'BurkinaFaso'},
+						{id:19,name:'Bulgaria'},
+						{id:20,name:'Bahrain'},
+						{id:21,name:'Burundi'},
+						{id:22,name:'Benin'},
+						{id:23,name:'Bermuda'},
+						{id:24,name:'BruneiDarussalam'},
+						{id:25,name:'Bolivia'},
+						{id:26,name:'Brazil'},
+						{id:27,name:'Bahamas.The'},
+						{id:28,name:'Bhutan'},
+						{id:29,name:'Botswana'},
+						{id:30,name:'Belarus'},
+						{id:31,name:'Belize'},
+						{id:32,name:'Canada'},
+						{id:33,name:'Congo.Dem.Rep.'},
+						{id:34,name:'CentralAfricanRepublic'},
+						{id:35,name:'Congo.Rep.'},
+						{id:36,name:'Switzerland'},
+						{id:37,name:'CôtedIvoire'},
+						{id:38,name:'Chile'},
+						{id:39,name:'Cameroon'},
+						{id:40,name:'China'},
+						{id:41,name:'Colombia'},
+						{id:42,name:'CostaRica'},
+						{id:43,name:'Cuba'},
+						{id:44,name:'CapeVerde'},
+						{id:45,name:'Cyprus'},
+						{id:46,name:'CzechRepublic'},
+						{id:47,name:'Germany'},
+						{id:48,name:'Djibouti'},
+						{id:49,name:'Denmark'},
+						{id:50,name:'Dominica'},
+						{id:51,name:'DominicanRepublic'},
+						{id:52,name:'Algeria'},
+						{id:53,name:'Ecuador'},
+						{id:54,name:'Estonia'},
+						{id:55,name:'Egypt.ArabRep.'},
+						{id:56,name:'Eritrea'},
+						{id:57,name:'Spain'},
+						{id:58,name:'Ethiopia'},
+						{id:59,name:'Finland'},
+						{id:60,name:'Fiji'},
+						{id:61,name:'FaeroeIslands'},
+						{id:62,name:'France'},
+						{id:63,name:'Micronesia.Fed.Sts.'},
+						{id:64,name:'Gabon'},
+						{id:65,name:'UnitedKingdom'},
+						{id:66,name:'Grenada'},
+						{id:67,name:'Georgia'},
+						{id:68,name:'Ghana'},
+						{id:69,name:'Greenland'},
+						{id:70,name:'Gambia.The'},
+						{id:71,name:'Guinea'},
+						{id:72,name:'EquatorialGuinea'},
+						{id:73,name:'Greece'},
+						{id:74,name:'Guatemala'},
+						{id:75,name:'Guam'},
+						{id:76,name:'Guinea-Bissau'},
+						{id:77,name:'Guyana'},
+						{id:78,name:'HongKong.China'},
+						{id:79,name:'Honduras'},
+						{id:80,name:'Croatia'},
+						{id:81,name:'Haiti'},
+						{id:82,name:'Hungary'},
+						{id:83,name:'Indonesia'},
+						{id:84,name:'Ireland'},
+						{id:85,name:'Israel'},
+						{id:86,name:'India'},
+						{id:87,name:'Iraq'},
+						{id:88,name:'Iran.IslamicRep.'},
+						{id:89,name:'Iceland'},
+						{id:90,name:'Italy'},
+						{id:91,name:'Jamaica'},
+						{id:92,name:'Jordan'},
+						{id:93,name:'Japan'},
+						{id:94,name:'Kenya'},
+						{id:95,name:'KyrgyzRepublic'},
+						{id:96,name:'Cambodia'},
+						{id:97,name:'Kiribati'},
+						{id:98,name:'Comoros'},
+						{id:99,name:'St.KittsandNevis'},
+						{id:100,name:'Korea.Dem.Rep.'},
+						{id:101,name:'Korea.Rep.'},
+						{id:102,name:'Kuwait'},
+						{id:103,name:'CaymanIslands'},
+						{id:104,name:'Kazakhstan'},
+						{id:105,name:'LaoPDR'},
+						{id:106,name:'Lebanon'},
+						{id:107,name:'St.Lucia'},
+						{id:108,name:'Liechtenstein'},
+						{id:109,name:'SriLanka'},
+						{id:110,name:'Liberia'},
+						{id:111,name:'Lesotho'},
+						{id:112,name:'Lithuania'},
+						{id:113,name:'Luxembourg'},
+						{id:114,name:'Latvia'},
+						{id:115,name:'Libya'},
+						{id:116,name:'Morocco'},
+						{id:117,name:'Monaco'},
+						{id:118,name:'Moldova'},
+						{id:119,name:'Montenegro'},
+						{id:120,name:'Madagascar'},
+						{id:121,name:'MarshallIslands'},
+						{id:122,name:'Macedonia.FYR'},
+						{id:123,name:'Mali'},
+						{id:124,name:'Myanmar'},
+						{id:125,name:'Mongolia'},
+						{id:126,name:'Macao.China'},
+						{id:127,name:'NorthernMarianaIslands'},
+						{id:128,name:'Mauritania'},
+						{id:129,name:'Malta'},
+						{id:130,name:'Mauritius'},
+						{id:131,name:'Maldives'},
+						{id:132,name:'Malawi'},
+						{id:133,name:'Mexico'},
+						{id:134,name:'Malaysia'},
+						{id:135,name:'Mozambique'},
+						{id:136,name:'Namibia'},
+						{id:137,name:'NewCaledonia'},
+						{id:138,name:'Niger'},
+						{id:139,name:'Nigeria'},
+						{id:140,name:'Nicaragua'},
+						{id:141,name:'Netherlands'},
+						{id:142,name:'Norway'},
+						{id:143,name:'Nepal'},
+						{id:144,name:'NewZealand'},
+						{id:145,name:'Oman'},
+						{id:146,name:'Panama'},
+						{id:147,name:'Peru'},
+						{id:148,name:'FrenchPolynesia'},
+						{id:149,name:'PapuaNewGuinea'},
+						{id:150,name:'Philippines'},
+						{id:151,name:'Pakistan'},
+						{id:152,name:'Poland'},
+						{id:153,name:'PuertoRico'},
+						{id:154,name:'WestBankandGaza'},
+						{id:155,name:'Portugal'},
+						{id:156,name:'Palau'},
+						{id:157,name:'Paraguay'},
+						{id:158,name:'Qatar'},
+						{id:159,name:'Romania'},
+						{id:160,name:'Serbia'},
+						{id:161,name:'RussianFederation'},
+						{id:162,name:'Rwanda'},
+						{id:163,name:'SaudiArabia'},
+						{id:164,name:'SolomonIslands'},
+						{id:165,name:'Seychelles'},
+						{id:166,name:'Sudan'},
+						{id:167,name:'Sweden'},
+						{id:168,name:'Singapore'},
+						{id:169,name:'Slovenia'},
+						{id:170,name:'SlovakRepublic'},
+						{id:171,name:'SierraLeone'},
+						{id:172,name:'SanMarino'},
+						{id:173,name:'Senegal'},
+						{id:174,name:'Somalia'},
+						{id:175,name:'Suriname'},
+						{id:176,name:'SãoToméandPrincipe'},
+						{id:177,name:'ElSalvador'},
+						{id:178,name:'SyrianArabRepublic'},
+						{id:179,name:'Swaziland'},
+						{id:180,name:'Chad'},
+						{id:181,name:'Togo'},
+						{id:182,name:'Thailand'},
+						{id:183,name:'Tajikistan'},
+						{id:184,name:'Timor-Leste'},
+						{id:185,name:'Turkmenistan'},
+						{id:186,name:'Tunisia'},
+						{id:187,name:'Tonga'},
+						{id:188,name:'Turkey'},
+						{id:189,name:'TrinidadandTobago'},
+						{id:190,name:'Tanzania'},
+						{id:191,name:'Ukraine'},
+						{id:192,name:'Uganda'},
+						{id:193,name:'UnitedStates'},
+						{id:194,name:'Uruguay'},
+						{id:195,name:'Uzbekistan'},
+						{id:196,name:'St.VincentandtheGrenadines'},
+						{id:197,name:'Venezuela.RB'},
+						{id:198,name:'VirginIslands(U.S.)'},
+						{id:199,name:'Vietnam'},
+						{id:200,name:'Vanuatu'},
+						{id:201,name:'Samoa'},
+						{id:202,name:'Yemen.Rep.'},
+						{id:203,name:'Kosovo'},
+						{id:204,name:'Mayotte'},
+						{id:205,name:'SouthAfrica'},
+						{id:206,name:'Zambia'},
+						{id:207,name:'Zimbabwe'},
+
+                    ]
+                });
+
+      
+            });
+        </script>
+  <div class="github-fork-ribbon-wrapper right-bottom">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/tomjie">Fork me on GitHub</a>
+        </div>
+    </div>
+    </body>
+
+</html>
